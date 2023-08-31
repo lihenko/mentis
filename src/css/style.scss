@@ -17,7 +17,7 @@ body, html{
       @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
     }
     h2{
-      @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
+      @apply text-[31px] leading-[40px] font-bold font-cabin uppercase tracking-wide;
     }
     h3{
       @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
@@ -30,6 +30,9 @@ body, html{
     }
     p{
         @apply mb-8;
+        &:last-child{
+          @apply mb-0;
+        }
     }
     .container{
         @apply mx-auto px-3;
@@ -81,7 +84,7 @@ body, html{
     }
     
     .btn{
-      @apply py-2 px-3 uppercase transition-all font-bold font-montserrat text-sm tracking-wide w-[255px] lg:py-4 max-w-full text-center inline-block;
+      @apply py-2 px-3 uppercase transition-all font-bold font-montserrat text-sm tracking-wide w-[255px] lg:py-4 max-w-full text-center inline-block no-underline;
     }
     .btn-primary {
       @apply bg-blue text-white border border-blue;
@@ -96,9 +99,9 @@ body, html{
       }
     }
     a{
-        @apply text-blue transition-all;
+        @apply text-lightblue transition-all underline;
         &:hover {
-          @apply text-lightblue;
+          @apply text-lightblue no-underline;
         }
     }
 
@@ -112,7 +115,89 @@ body, html{
 
   }
 
+  .info-slider-wrap{
+    padding: 39px 125px 39px 79px;
+    color: #fff;
+    position: relative;
+    &:after{
+      content:url(../img/chat-message-info.svg);
+      position: absolute;
+      top: 50%;
+      right: 29px;
+      transform: translateY(-50%);
+      width: 65px;
+      height: 65px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    & a{
+      color: #fff;
+    }
+  }
 
+  #home-info-slider .prev{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover #left-arrows-slider{ 
+      stroke: #fff;
+    }
+  }
+
+  #home-info-slider .next{
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover #right-arrows-slider{ 
+      stroke: #fff;
+    }
+  }
+
+.news-icon{
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,0.1);
+}  
+
+.news-title a{
+  @apply text-blue font-bold;
+}
+
+.project-link a{
+  & svg{
+    display: inline-block;
+    margin-left: 10px;
+    transition-property: all;
+    transition-duration: 150ms;
+  }
+  &:hover svg{
+    margin-left: 15px;
+    & .project-arrow{
+      fill: #fff;
+    }
+  }
+}
+
+.project-thumbnail{
+  & img{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
 
 @import "./media";
 @import "./animate.min";

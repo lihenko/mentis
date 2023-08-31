@@ -141,6 +141,7 @@
 
 // Toggle
 .toggle-btn {
+    transform: translateY(-50%);
     align-items: center;
     @if $omm-button-position-bottom != "" {
         bottom: $omm-button-position-bottom;
@@ -428,6 +429,9 @@ body {
     width: auto;
     z-index: 1;
     & a{
+        border: none;
+    }
+    & li a{
       border:none;
       position: relative;
       font-size: 15px;
@@ -445,8 +449,8 @@ body {
 
 @media screen and (min-width: 1250px)  {
     body .omni-mobile-menu{
-        & a{
-            padding: 35px 30px;
+        & li a{
+            padding: 35px 26px;
         }
     }
 }

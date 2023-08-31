@@ -29,30 +29,15 @@ function backToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-jQuery('.product-slider').slick({
+jQuery('.info-slider').slick({
   autoplay: true,
-  slidesToShow: 3,
+  slidesToShow: 1,
   slidesToScroll: 1,
-  lazyLoad: 'ondemand',
   dots: false,
   arrows: true,
   pauseOnHover:true,
-  responsive: [
-    {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 680,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-  ]
+  prevArrow: jQuery('#home-info-slider .prev'),
+  nextArrow: jQuery('#home-info-slider .next')
 });
 
 
@@ -102,5 +87,10 @@ jQuery('.seals-slider').slick({
 
 jQuery('.fadeinup').addClass("invisible").viewportChecker({
   classToAdd: 'animate__animated animate__fadeInUp',
+  offset: 200
+});
+
+jQuery('.fadeinleft').addClass("invisible").viewportChecker({
+  classToAdd: 'animate__animated animate__fadeInLeft',
   offset: 200
 });
