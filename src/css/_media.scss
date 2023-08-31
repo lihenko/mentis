@@ -1,0 +1,25 @@
+@media screen and (min-width: 480px){
+      
+}
+
+@media screen and (min-width: 768px){
+
+}
+
+@media screen and (min-width: 992px){
+    #main-menu .menu-button a{
+        padding: 7px 9px;
+        margin-left: 15px;
+    }
+}
+
+@media screen and (min-width: 1250px){
+    .footer-menu{
+        & ul{
+          & li{
+            padding-left: 30px;
+            padding-right: 30px;
+          }
+        }
+      }
+}

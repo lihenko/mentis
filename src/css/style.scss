@@ -1,0 +1,112 @@
+@import "./fonts";
+@import "./slick";
+@import "./tailwind";
+@import "./mobile-menu";
+@import "./main";
+
+body, html{
+  height: 100%;
+  position: relative;
+}
+
+@layer components {
+    body{
+        @apply bg-white text-black text-base lg:text-lg;
+    }
+    h1, .h1{
+      @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
+    }
+    h2{
+      @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
+    }
+    h3{
+      @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
+    }
+    h4{
+      @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
+    }
+    h5{
+      @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
+    }
+    p{
+        @apply mb-8;
+    }
+    .container{
+        @apply mx-auto px-3;
+    }
+    input[type='text'], input[type='email'], input[type='tel'], input[type='url'], input[type='number']{
+      width: 100%;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border:1px solid #ccc;
+      border-radius: 8px;
+    }
+    input:focus{
+        @apply outline-none;
+        border-color: #E55129;
+    }
+    input::placeholder{
+        @apply text-black;
+    }
+    select{
+      width: 100%;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-left: 0.8rem;
+      padding-right: 1rem;
+      border:1px solid #ccc;
+      border-radius: 8px;
+      height: 41px;
+      background-color: #fff;
+    }
+    select:focus{
+      @apply outline-none;
+      border-color: #E55129;
+    }
+    textarea:focus{
+        @apply outline-none;
+    }
+    textarea::placeholder{
+        @apply text-black;
+    }
+
+    input[type='submit']{
+      @apply py-2 px-8 uppercase transition-all font-semibold text-base tracking-wide lg:py-3 max-w-full text-center inline-block  bg-blue text-white cursor-pointer;
+    }
+
+    input[type='submit']:hover{
+      @apply bg-blue text-white;
+    }
+    
+    .btn{
+      @apply py-2 px-8 uppercase transition-all font-semibold text-base tracking-wide lg:py-3 max-w-full text-center inline-block;
+    }
+    .btn-primary {
+      @apply bg-blue text-white;
+      &:hover{
+        @apply bg-blue text-white;
+      }
+    }
+    a{
+        @apply text-blue transition-all;
+        &:hover {
+          @apply text-lightblue;
+        }
+    }
+
+    main ul{
+      @apply list-disc ml-8 mb-10;
+    }
+
+    main ul li{
+      @apply list-item mb-5;
+    }
+
+  }
+
+
+
+@import "./media";
+@import "./animate.min";
