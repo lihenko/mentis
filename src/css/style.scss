@@ -81,12 +81,18 @@ body, html{
     }
     
     .btn{
-      @apply py-2 px-8 uppercase transition-all font-semibold text-base tracking-wide lg:py-3 max-w-full text-center inline-block;
+      @apply py-2 px-3 uppercase transition-all font-bold font-montserrat text-sm tracking-wide w-[255px] lg:py-4 max-w-full text-center inline-block;
     }
     .btn-primary {
-      @apply bg-blue text-white;
+      @apply bg-blue text-white border border-blue;
       &:hover{
-        @apply bg-blue text-white;
+        @apply bg-darkblue border-darkblue text-white;
+      }
+    }
+    .btn-secondary {
+      @apply text-blue border border-black;
+      &:hover{
+        @apply bg-black text-white;
       }
     }
     a{
