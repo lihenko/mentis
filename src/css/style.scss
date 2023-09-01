@@ -14,7 +14,7 @@ body, html{
         @apply bg-white text-black text-base lg:text-lg;
     }
     h1, .h1{
-      @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
+      @apply text-[36px] leading-[35px] lg:text-[45px] lg:leading-[43px] font-bold font-cabin uppercase tracking-wide;
     }
     h2{
       @apply text-[31px] leading-[40px] font-bold font-cabin uppercase tracking-wide;
