@@ -105,6 +105,19 @@ body, html{
         }
     }
 
+    .btn-white {
+      @apply text-white border border-white lg:py-3 text-micro;
+      &:hover{
+        @apply bg-white text-black;
+      }
+    }
+    a{
+        @apply text-lightblue transition-all underline;
+        &:hover {
+          @apply text-lightblue no-underline;
+        }
+    }
+
     main ul{
       @apply list-disc ml-8 mb-10;
     }
@@ -196,6 +209,21 @@ body, html{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+.publication-link a{
+  & svg{
+    display: inline-block;
+    margin-left: 10px;
+    transition-property: all;
+    transition-duration: 150ms;
+  }
+  &:hover svg{
+    margin-left: 15px;
+    & .publication-arrow{
+      fill: #fff;
+    }
   }
 }
 
