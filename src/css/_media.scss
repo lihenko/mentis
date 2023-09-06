@@ -10,6 +10,9 @@
   .menu-icon a{
     padding: 0;
   }
+  .hero-slider-wrap{
+    bottom: 16%;
+  }
 }
 
 @media screen and (min-width: 1250px){
@@ -42,5 +45,8 @@
   }
   .menu-icon a{
     margin-left: 20px;
+  }
+  .hero-slider-wrap{
+    bottom: 23%;
   }
 }

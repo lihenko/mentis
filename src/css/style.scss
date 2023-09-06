@@ -227,5 +227,19 @@ body, html{
   }
 }
 
+#principal-investigator{
+  margin-top: -1px;
+}
+
+.hero-slider-wrap{
+  position: absolute;
+  width: 54%;
+  left: 0;
+  right: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 23%;
+}
+
 @import "./media";
 @import "./animate.min";

@@ -41,6 +41,16 @@ jQuery('.info-slider').slick({
 });
 
 
+jQuery('.hero-slider').slick({
+  autoplay: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  speed: 900,
+  fade: true,
+  dots: false,
+  arrows: false,
+});
+
 jQuery('.seals-slider').slick({
   autoplay: true,
   slidesToShow: 6,
