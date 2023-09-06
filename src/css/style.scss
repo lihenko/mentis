@@ -241,5 +241,51 @@ body, html{
   bottom: 23%;
 }
 
+.page-title{
+  height: 65px;
+  width: 280px;
+  position: relative;
+  &:before{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: -80px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 80px 65px 0;
+    border-color: transparent #3e44a9 transparent transparent;
+  }
+  &:after{
+    content:'';
+    position: absolute;
+    top: 0;
+    right: -80px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 65px 80px 0 0;
+    border-color:  #3e44a9 transparent transparent transparent;
+  }
+}
+
+.project-grid-item{
+  background-color: #fff;
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,0.1);
+  display: block;
+  height: 100%;
+}
+
+#load-more-projects-button svg{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+#load-more-projects-button:hover svg .stroked{
+  stroke:#fff;
+}
+
 @import "./media";
 @import "./animate.min";

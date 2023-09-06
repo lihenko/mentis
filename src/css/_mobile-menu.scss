@@ -63,7 +63,7 @@
         z-index: 1;
     }
 
-    li.current-menu-item a{
+    li.current-menu-item a, li.current-post-ancestor a{
         color: $omm-link-color-hover;
     }
 
