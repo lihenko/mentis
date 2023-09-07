@@ -66,4 +66,41 @@
   .hero-slider-wrap{
     bottom: 23%;
   }
+  #projects-grid .fadeinup:nth-child(8n + 2){
+    animation-delay: 250ms;
+  }
+  #projects-grid .fadeinup:nth-child(8n + 3){
+    animation-delay: 500ms;
+  }
+  #projects-grid .fadeinup:nth-child(8n + 4){
+    animation-delay: 750ms;
+  }
+  
+  #projects-grid .fadeinup:nth-child(8n + 5){
+    animation-delay: 1000ms;
+  }
+  #projects-grid .fadeinup:nth-child(8n + 6){
+    animation-delay: 1250ms;
+  }
+  #projects-grid .fadeinup:nth-child(8n + 7){
+    animation-delay: 1500ms;
+  }
+  #projects-grid .fadeinup:nth-child(8n + 8){
+    animation-delay: 1750ms;
+  }
+  #news-grid .fadeinup:nth-child(6n + 2){
+    animation-delay: 250ms;
+  }
+  #news-grid .fadeinup:nth-child(6n + 3){
+    animation-delay: 500ms;
+  }
+  #news-grid .fadeinup:nth-child(6n + 4){
+    animation-delay: 750ms;
+  }
+  #news-grid .fadeinup:nth-child(6n + 5){
+    animation-delay: 1000ms;
+  }
+  #news-grid .fadeinup:nth-child(6n + 6){
+    animation-delay: 1250ms;
+  }
 }

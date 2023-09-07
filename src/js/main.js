@@ -104,3 +104,14 @@ jQuery('.fadeinleft').addClass("invisible").viewportChecker({
   classToAdd: 'animate__animated animate__fadeInLeft',
   offset: 200
 });
+
+jQuery(document).on("change","#newsyear",function() {
+  console.log($(this).val());
+ });
+
+ jQuery(document).on("click",".year-filter-line > div",function() {
+    jQuery('.year-filter-line > div').removeClass('active');
+    jQuery(this).addClass('active');
+    var year = jQuery(this).data('value');
+    jQuery('#newsyear').val(year).trigger("change");
+ });
