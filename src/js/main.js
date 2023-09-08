@@ -107,11 +107,35 @@ jQuery('.fadeinleft').addClass("invisible").viewportChecker({
 
 jQuery(document).on("change","#newsyear",function() {
   console.log($(this).val());
+  jQuery('.year-filter-line > div').removeClass('active');
+  jQuery('#news-filter-by-year .year-filter-line > div[data-value=' + jQuery(this).val() + ']').addClass('active');
  });
 
- jQuery(document).on("click",".year-filter-line > div",function() {
+ jQuery(document).on("click","#news-filter-by-year .year-filter-line > div",function() {
     jQuery('.year-filter-line > div').removeClass('active');
     jQuery(this).addClass('active');
     var year = jQuery(this).data('value');
     jQuery('#newsyear').val(year).trigger("change");
  });
+
+ jQuery(document).on("change","#publicationsyear",function() {
+  console.log($(this).val());
+  jQuery('.year-filter-line > div').removeClass('active');
+  jQuery('#publications-filter-by-year .year-filter-line > div[data-value=' + jQuery(this).val() + ']').addClass('active');
+ });
+
+ jQuery(document).on("click","#publications-filter-by-year .year-filter-line > div",function() {
+    jQuery('.year-filter-line > div').removeClass('active');
+    jQuery(this).addClass('active');
+    var year = jQuery(this).data('value');
+    jQuery('#publicationsyear').val(year).trigger("change");
+ });
+
+ jQuery(document).on("click",".publication-grid-buttons a[data-type=abstract]",function(event) {
+  event.preventDefault();
+  jQuery(this).parents('publication').find('.publictions-abs').toggleClass('hidden');
+});
+jQuery(document).on("click",".publication-grid-buttons a[data-type=bibtex]",function(event) {
+  event.preventDefault();
+  jQuery(this).parents('publication').find('.publication-bib').toggleClass('hidden');
+});
