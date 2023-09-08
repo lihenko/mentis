@@ -131,11 +131,35 @@ jQuery(document).on("change","#newsyear",function() {
     jQuery('#publicationsyear').val(year).trigger("change");
  });
 
+ jQuery(document).click(function(event) { 
+  var target = jQuery(event.target);
+    if(!target.closest('#modal-window').length && !target.closest('.publication-grid-buttons a').length && jQuery('#modal-window').is(":visible")){
+      jQuery('#modal-window').hide();
+      jQuery('.overlay').removeClass('active');
+    }
+  }        
+);
+
  jQuery(document).on("click",".publication-grid-buttons a[data-type=abstract]",function(event) {
   event.preventDefault();
-  jQuery(this).parents('publication').find('.publictions-abs').toggleClass('hidden');
+  var modal = jQuery('#modal-window');
+  var html = jQuery(this).parents('publication').find('.publictions-abs').html();
+  jQuery('.overlay').addClass('active');
+  modal.find('.modal-body').html(html);
+  modal.show();
+});
+jQuery(document).on("click","#modal-window .close",function(event) {
+  var modal = jQuery('#modal-window');
+  var overlay = jQuery('.overlay');
+  overlay.removeClass('active');
+  modal.hide();
 });
 jQuery(document).on("click",".publication-grid-buttons a[data-type=bibtex]",function(event) {
   event.preventDefault();
-  jQuery(this).parents('publication').find('.publication-bib').toggleClass('hidden');
+  var modal = jQuery('#modal-window');
+  var html = jQuery(this).parents('publication').find('.publication-bib').html();
+  jQuery('.overlay').addClass('active');
+  modal.find('.modal-body').html(html);
+  modal.show();
 });
+
