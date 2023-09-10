@@ -20,7 +20,7 @@ body, html{
       @apply text-[31px] leading-[40px] font-bold font-cabin uppercase tracking-wide;
     }
     h3{
-      @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
+      @apply text-[22px] leading-[26px] font-bold font-cabin uppercase tracking-wide;
     }
     h4{
       @apply text-[45px] leading-[43px] font-bold font-cabin uppercase tracking-wide;
@@ -393,6 +393,7 @@ body, html{
   position: relative;
   display: block;
   height: 100%;
+  padding-bottom: 2.5rem;
 }
 
 .publication-grid-type{
@@ -418,6 +419,12 @@ body, html{
   top: 14px;
 }
 
+.publication-grid-buttons{
+  padding-top: 2rem;
+  padding-right: 1.75rem;
+  padding-left: 2.25rem;
+}
+
 .publication-grid-buttons a{
   color: #3E44A9;
   padding: 10px 15px;
@@ -427,14 +434,12 @@ body, html{
   letter-spacing: 1px;
   line-height: 16px;
   text-align: center;
-  width: 104px;
   text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
   &:hover{
     color: #fff;
     background-color: #000;
-  }
-  &:not(:first-child){
-    margin-left: 10px;
   }
 }
 
@@ -513,6 +518,30 @@ body, html{
 
 pre[class*=language-] {
   margin: 0!important;
+}
+
+.courses-data-wrap {
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,0.1);
+}
+
+.courses-brochure a{
+  color: #3E44A9;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-decoration: none;
+  &:hover{
+    color: #04E1FE;
+    & svg .stroked{
+      stroke: #04e1fe !important;
+    }
+  }
+  & svg .stroked{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
 }
 
 @import "./media";

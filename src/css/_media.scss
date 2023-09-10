@@ -1,4 +1,12 @@
 @media screen and (min-width: 480px){
+  .publication-grid-buttons a{
+    margin-bottom: 0;
+    display: inline-block;
+    width: 104px;
+    &:not(:first-child){
+      margin-left: 10px;
+    }
+  }
       
 }
 
@@ -29,6 +37,13 @@
         margin-left: auto;
         margin-right: auto;
       }
+  }
+  .publication-grid-item{
+    padding-bottom: 7rem;
+  }
+  .publication-grid-buttons{
+    position: absolute;
+    bottom: 2.5rem;
   }
 }
 
