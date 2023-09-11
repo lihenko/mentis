@@ -163,3 +163,8 @@ jQuery(document).on("click",".publication-grid-buttons a[data-type=bibtex]",func
   modal.show();
 });
 
+jQuery(document).on("click",".courses-accordion-item-button",function() {
+  jQuery('.courses-accordion-item').not(jQuery(this).parents('.courses-accordion-item')).removeClass('open');
+  jQuery(this).parents('.courses-accordion-item').toggleClass('open');
+  jQuery(this).parents('.courses-accordion-item').find('.courses-accordion-item-body').toggleClass('animate__animated animate__slideInRight');
+});
