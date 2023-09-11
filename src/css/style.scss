@@ -472,8 +472,7 @@ body, html{
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #000;
-  opacity: 0.15;
+  background-color: rgba(49,54,139,0.86);
   z-index: 99;
   display: none;
   &.active{
@@ -483,32 +482,44 @@ body, html{
 
 #modal-window{
   position: fixed;
-  display: none;
-  width: 680px;
+  width: 857px;
   max-width: 80vw;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -200vh);
   background-color: #fff;
   z-index: 100;
+  transition: all 0.3s ease-in-out;
   &.active{
-    display: block;
+    transform: translate(-50%, -50%);
   }
   & .close{
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1;
+    color: #0979FE;
+    font-family: Cabin;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 24px;
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    border: 1px solid #000;
+    transition: all 0.15s ease-in-out;
+    & svg{
+      margin-left: 7px;
+      & .stroked{
+        transition: all 0.15s ease-in-out;
+      }
+    }
+    &:hover {
+      color:#3E44A9;
+      & svg .stroked{
+        stroke: #3E44A9!important;
+      }
+    }
   }
   & .modal-body{
     max-height: 80vh;
@@ -563,7 +574,7 @@ pre[class*=language-] {
 }
 
 .courses-accordion-item-body{
-  padding: 20px;
+  padding: 20px 20px 20px 0;
   & p{
     margin-bottom: 15px;
   }
@@ -572,6 +583,8 @@ pre[class*=language-] {
 .courses-accordion-item-title{
   padding: 13px 30px 13px 0;
   position: relative;
+  background-color: #fff;
+  cursor: pointer;
   & .courses-accordion-item-button{
     position: absolute;
     top: 50%;
@@ -594,6 +607,8 @@ pre[class*=language-] {
   }
   & .courses-accordion-item-body{
     display: none;
+    position: relative;
+    z-index: -1;
   }
   &.open{
     & .courses-accordion-item-body{
@@ -606,7 +621,126 @@ pre[class*=language-] {
   }
 }
 
+.member-item{
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,0.1);
+  padding: 23px 23px 17px;
+  margin-bottom: 72px;
+  & .member-photo{
+    width: 171px;
+    height: 100%;
+    position: relative;
+    background-color: #3E44A9;
+    margin-top: -30px;
+    margin-bottom: -47px;
+    & img{
+      margin-top: -17px;
+      margin-left: 19px;
+      margin-bottom: 17px;
+      box-shadow: 0 20px 40px 0 rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+  }
+  & .member-buttons a svg .stroked{
+    transition: all 0.15s ease-in-out;
+  }
+  & .member-buttons a:hover svg .stroked{
+    stroke: #3E44A9!important;
+  }
+}
 
+#modal-window .member-info{
+  display: block!important;
+}
+
+#modal-window .info-button{
+  display: none;
+}
+
+#modal-window {
+  & .member-photo{
+    width: 171px;
+    height: 100%;
+    position: relative;
+    background-color: #3E44A9;
+    margin-top: -30px;
+    margin-bottom: -47px;
+    & img{
+      margin-top: -17px;
+      margin-left: 19px;
+      margin-bottom: 17px;
+      position: relative;
+    }
+    
+  }
+  & .member-buttons a svg .stroked{
+    transition: all 0.15s ease-in-out;
+  }
+  & .member-buttons a:hover svg .stroked{
+    stroke: #3E44A9!important;
+  }
+}
+
+#modal-window.member{
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 23px;
+  & .modal-body{
+    overflow: visible;
+  }
+  & .member-data{
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 60vh;
+  }
+  & .member-buttons{
+    margin-bottom: 30px;;
+  }
+  & .member-photo{
+    margin-left: 0;
+  }
+}
+
+.vacancy-data-wrap {
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.vacancy-apply a{
+  color: #3E44A9;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-decoration: none;
+  &:hover{
+    color: #04E1FE;
+    & svg .stroked{
+      stroke: #04e1fe !important;
+    }
+  }
+  & svg .stroked{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+}
+
+.vacancy-icon{
+  width: 74px;
+  height: 74px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3E44A9;
+  margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vacancy-description a{
+  color: #0979FE;
+}
 
 @import "./media";
 @import "./animate.min";

@@ -131,28 +131,19 @@ jQuery(document).on("change","#newsyear",function() {
     jQuery('#publicationsyear').val(year).trigger("change");
  });
 
- jQuery(document).click(function(event) { 
-  var target = jQuery(event.target);
-    if(!target.closest('#modal-window').length && !target.closest('.publication-grid-buttons a').length && jQuery('#modal-window').is(":visible")){
-      jQuery('#modal-window').hide();
-      jQuery('.overlay').removeClass('active');
-    }
-  }        
-);
-
  jQuery(document).on("click",".publication-grid-buttons a[data-type=abstract]",function(event) {
   event.preventDefault();
   var modal = jQuery('#modal-window');
   var html = jQuery(this).parents('publication').find('.publictions-abs').html();
   jQuery('.overlay').addClass('active');
   modal.find('.modal-body').html(html);
-  modal.show();
+  modal.addClass('active');
 });
 jQuery(document).on("click","#modal-window .close",function(event) {
   var modal = jQuery('#modal-window');
   var overlay = jQuery('.overlay');
   overlay.removeClass('active');
-  modal.hide();
+  modal.removeClass('active');
 });
 jQuery(document).on("click",".publication-grid-buttons a[data-type=bibtex]",function(event) {
   event.preventDefault();
@@ -160,11 +151,33 @@ jQuery(document).on("click",".publication-grid-buttons a[data-type=bibtex]",func
   var html = jQuery(this).parents('publication').find('.publication-bib').html();
   jQuery('.overlay').addClass('active');
   modal.find('.modal-body').html(html);
-  modal.show();
+  modal.addClass('active');
 });
 
-jQuery(document).on("click",".courses-accordion-item-button",function() {
+jQuery(document).on("click",".courses-accordion-item-title",function() {
   jQuery('.courses-accordion-item').not(jQuery(this).parents('.courses-accordion-item')).removeClass('open');
+  jQuery('.courses-accordion-item-body').removeClass('animate__animated animate__slideInDown');
   jQuery(this).parents('.courses-accordion-item').toggleClass('open');
-  jQuery(this).parents('.courses-accordion-item').find('.courses-accordion-item-body').toggleClass('animate__animated animate__slideInRight');
+  jQuery(this).parents('.courses-accordion-item').find('.courses-accordion-item-body').toggleClass('animate__animated animate__slideInDown');
 });
+
+jQuery(document).on("click",".member-buttons a[data-modal=info]",function(event) {
+  event.preventDefault();
+  var modal = jQuery('#modal-window');
+  var html = jQuery(this).parents('.member-item').html();
+  html = '<div class="flex flex-wrap px-2">' + html + '</div>';
+  jQuery('.overlay').addClass('active');
+  modal.addClass('member');
+  modal.find('.modal-body').html(html);
+  modal.addClass('active');
+});
+
+
+jQuery(document).click(function(event) { 
+  var target = jQuery(event.target);
+    if(!target.closest('#modal-window').length && !target.closest('.publication-grid-buttons a').length && !target.closest('.member-buttons a').length && jQuery('#modal-window').is(":visible")){
+      jQuery('#modal-window').removeClass('active');
+      jQuery('.overlay').removeClass('active');
+    }
+  }        
+);
