@@ -45,6 +45,10 @@
     position: absolute;
     bottom: 2.5rem;
   }
+  #modal-window.gallery .gallery-description-wrap{
+    height: 75px;
+    width: calc(100% - 120px - 40px);
+  }
 }
 
 @media screen and (min-width: 1250px){
@@ -127,5 +131,25 @@
     position: absolute;
     top: 19px;
     left: -37px;
+  }
+  .gallery-wrap[data-point=true]{
+    &::after{
+      content:'';
+      width: 24px;
+      height: 24px;
+      background-color: #fff;
+      border-radius: 50%;
+      border:5px solid #3e44a9;
+      position: absolute;
+      left: -109px;
+    }
+    &::before{
+      content: attr(data-year);
+      position: absolute;
+      left: -179px;
+    }
+    &.now::after{
+      background-color: #04E1FE;
+    }
   }
 }

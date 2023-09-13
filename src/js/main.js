@@ -51,45 +51,6 @@ jQuery('.hero-slider').slick({
   arrows: false,
 });
 
-jQuery('.seals-slider').slick({
-  autoplay: true,
-  slidesToShow: 6,
-  slidesToScroll: 1,
-  lazyLoad: 'ondemand',
-  dots: false,
-  arrows: true,
-  responsive: [
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 680,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-  ]
-});
-
 
 
 //Animate
@@ -104,6 +65,7 @@ jQuery('.fadeinleft').addClass("invisible").viewportChecker({
   classToAdd: 'animate__animated animate__fadeInLeft',
   offset: 200
 });
+
 
 jQuery(document).on("change","#newsyear",function() {
   console.log($(this).val());
@@ -138,12 +100,14 @@ jQuery(document).on("change","#newsyear",function() {
   jQuery('.overlay').addClass('active');
   modal.find('.modal-body').html(html);
   modal.addClass('active');
+  jQuery('body').css('overflow-y', 'hidden');
 });
 jQuery(document).on("click","#modal-window .close",function(event) {
   var modal = jQuery('#modal-window');
   var overlay = jQuery('.overlay');
   overlay.removeClass('active');
   modal.removeClass('active');
+  jQuery('body').css('overflow-y', 'auto');
 });
 jQuery(document).on("click",".publication-grid-buttons a[data-type=bibtex]",function(event) {
   event.preventDefault();
@@ -152,6 +116,7 @@ jQuery(document).on("click",".publication-grid-buttons a[data-type=bibtex]",func
   jQuery('.overlay').addClass('active');
   modal.find('.modal-body').html(html);
   modal.addClass('active');
+  jQuery('body').css('overflow-y', 'hidden');
 });
 
 jQuery(document).on("click",".courses-accordion-item-title",function() {
@@ -170,14 +135,130 @@ jQuery(document).on("click",".member-buttons a[data-modal=info]",function(event)
   modal.addClass('member');
   modal.find('.modal-body').html(html);
   modal.addClass('active');
+  jQuery('body').css('overflow-y', 'hidden');
 });
 
 
 jQuery(document).click(function(event) { 
   var target = jQuery(event.target);
-    if(!target.closest('#modal-window').length && !target.closest('.publication-grid-buttons a').length && !target.closest('.member-buttons a').length && jQuery('#modal-window').is(":visible")){
+    if(!target.closest('#modal-window').length && !target.closest('.publication-grid-buttons a').length && !target.closest('.member-buttons a').length && !target.closest('.gallery-button').length && jQuery('#modal-window').is(":visible")){
       jQuery('#modal-window').removeClass('active');
       jQuery('.overlay').removeClass('active');
+      jQuery('body').css('overflow-y', 'auto');
     }
   }        
 );
+
+function gallery(){
+  var slider = jQuery('.gallery-slider');
+  for (var i = 0; i < slider.length; i++) {
+    var item_width = jQuery(slider[i]).find('.slider-nav-wrap').width() - 4;
+    var quantity = jQuery(slider[i]).find('.slider-nav > .flex').length;
+    var height = Math.ceil(jQuery(slider[i]).find('.slider-for').height() - 43);
+    jQuery(slider[i]).find('.slider-nav').width(item_width * quantity);
+    jQuery(slider[i]).find('.slider-nav > .flex').width(item_width);
+    jQuery(slider[i]).find('.slider-nav .gallery-item').height(height / 4);
+    var buttons = '<div class="gallery-prev"><svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-1171, -778)"><g transform="translate(1183, 790) rotate(90) translate(-1183, -790)translate(1171, 778)"><polygon points="0 0 24 0 24 24 0 24"></polygon><polyline class="stroked" stroke="#0979FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="8 10 12 14 16 10"></polyline></g></g></g></svg></div>';
+    for (let j = 0; j < quantity; j++) {
+      var page_number = j + 1;
+      if (page_number == 1) {
+        buttons = buttons + '<div class="gallery-button-number current" data-number="' + page_number + '">' + page_number +  '</div>';
+      } else {
+        buttons = buttons + '<div class="gallery-button-number" data-number="' + page_number + '">' + page_number +  '</div>';
+      }
+    }
+    buttons = buttons + '<div class="gallery-next"><svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-1502, -778)"><g transform="translate(1514, 790) scale(-1, 1) rotate(90) translate(-1514, -790)translate(1502, 778)"><polygon points="0 0 24 0 24 24 0 24"></polygon><polyline class="stroked" stroke="#0979FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="8 10 12 14 16 10"></polyline></g></g></g></svg></div>';
+    jQuery(slider[i]).find('.slider-nav-numbers').html(buttons);
+  } 
+}
+
+jQuery(document).on('click', '.slider-nav .gallery-item', function(event) {
+  var url = jQuery(this).data('url');
+  var main = jQuery(this).parents('.gallery-slider').find('.slider-for .gallery-item');
+  jQuery(this).parents('.slider-nav').find('.gallery-item').removeClass('current');
+  jQuery(this).addClass('current');
+  main.css('opacity', '0');
+  setTimeout(function() { 
+    main.css('background-image', 'url(' + url + ')');
+    main.css('opacity', '1');
+  }, 500);
+  
+});
+
+jQuery(document).on('click', '.gallery-button-number', function(event) {
+  var pagetoshow = jQuery(this).data('number');
+  var currentpage = jQuery(this).parents('.slider-nav-numbers').find('.gallery-button-number.current').data('number');
+  var slidetrack = jQuery(this).parents('.slider-nav-wrap').find('.slider-nav');
+  var slidewidth = slidetrack.find('> div').width();
+  if (pagetoshow == currentpage) {
+    return false;
+  } else {
+    jQuery(this).parents('.slider-nav-numbers').find('.gallery-button-number').removeClass('current');
+    slidetrack.css('transform', 'translateX(-' + slidewidth * (pagetoshow - 1) + 'px)');
+    jQuery(this).addClass('current');
+  } 
+});
+
+jQuery(document).on('click', '.gallery-prev', function(event) {
+  var currentpage = jQuery(this).parents('.slider-nav-numbers').find('.gallery-button-number.current').data('number');
+  var slidetrack = jQuery(this).parents('.slider-nav-wrap').find('.slider-nav');
+  var slidewidth = slidetrack.find('> div').width();
+  var slidequatity = slidetrack.find('> div').length;
+  var newpage = currentpage - 1;
+  if (newpage == 0) {
+    newpage = slidequatity;
+  }
+  var n = 0;
+  if (currentpage - 1 == 0) {
+    var n = slidequatity - 1;
+  } else {
+    var n = currentpage - 2;
+  }
+  jQuery(this).parents('.slider-nav-numbers').find('.gallery-button-number').removeClass('current');
+  slidetrack.css('transform', 'translateX(-' + slidewidth * n + 'px)');
+  jQuery(this).parents('.slider-nav-numbers').find(".gallery-button-number[data-number='" + newpage + "']").addClass('current');
+});
+
+jQuery(document).on('click', '.gallery-next', function(event) {
+  var currentpage = jQuery(this).parents('.slider-nav-numbers').find('.gallery-button-number.current').data('number');
+  var slidetrack = jQuery(this).parents('.slider-nav-wrap').find('.slider-nav');
+  var slidewidth = slidetrack.find('> div').width();
+  var slidequatity = slidetrack.find('> div').length;
+  var newpage = currentpage + 1;
+  if (newpage > slidequatity) {
+    newpage = 1;
+  }
+  var n = 0;
+  if (currentpage + 1 > slidequatity) {
+    var n = 0;
+  } else {
+    var n = currentpage;
+  }
+  jQuery(this).parents('.slider-nav-numbers').find('.gallery-button-number').removeClass('current');
+  slidetrack.css('transform', 'translateX(-' + slidewidth * n + 'px)');
+  jQuery(this).parents('.slider-nav-numbers').find(".gallery-button-number[data-number='" + newpage + "']").addClass('current');
+});
+
+jQuery(document).on('click', '.gallery-button', function() {
+  var gallerydata = jQuery(this).parents('.gallery-wrap').html();
+  var modal = jQuery('#modal-window');
+  jQuery('.overlay').addClass('active');
+  modal.find('.modal-body').html('<div class="gallery-wrap flex flex-wrap">' + gallerydata + '</div>');
+  modal.addClass('active gallery');
+  setTimeout(function() { 
+    gallery();
+  }, 500);
+  
+  jQuery('body').css('overflow-y', 'hidden');
+});
+
+
+jQuery(document).on('scroll', function() {
+  var point = jQuery('.gallery-wrap[data-point=true]');
+  var topscroll = jQuery(window).scrollTop();
+  point.each(function () {
+    if (topscroll + 100 >= jQuery(this).offset().top) {
+      jQuery(this).addClass('now');
+    }
+  })
+});
